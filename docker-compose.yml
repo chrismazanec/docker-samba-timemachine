@@ -1,13 +1,13 @@
 version: '3'
 services:
   app:
-    image: willtho/samba-timemachine:latest
-    restart: always
+    build: .
+    restart: unless-stopped
     network_mode: host
     environment:
       TM_USER: timemachine
       TM_PW: timemachine
-      TM_SIZE: 512000
+      TM_SIZE: 1024000
     volumes:
-      - './timemachine:/timemachine'
+      - '/mnt/usb-disk/timemachine:/timemachine'
       - '/etc/localtime:/etc/localtime:ro'
